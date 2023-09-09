@@ -1,0 +1,35 @@
+<form [formGroup]="form">
+  <div id="stepper">
+    <div class="step" id="step1">
+      <h2>Step 1: Ingresar fecha de nacimiento</h2>
+      <input type="date" formControlName="birthdate">
+      <div *ngIf="form.get('birthdate')?.hasError('required') && form.get('birthdate')?.touched">
+        Este campo es requerido.
+      </div>
+      <div *ngIf="form.get('birthdate')?.hasError('futureDate') && form.get('birthdate')?.touched">
+        La fecha debe ser menor o igual al día actual.
+      </div>
+      <button (click)="nextStep()" [disabled]="stepsDisabled[0]">Next</button>
+    </div>
+    <div class="step" id="step2">
+      <h2>Step 2: Ingresar nombre</h2>
+      <input type="text" formControlName="name">
+      <div *ngIf="form.get('name')?.hasError('required') && form.get('name')?.touched">
+        Este campo es requerido.
+      </div>
+      <div *ngIf="form.get('name')?.hasError('pattern') && form.get('name')?.touched">
+        Solo se permiten letras en este campo.
+      </div>
+      <button (click)="nextStep()" [disabled]="stepsDisabled[1]">Next</button>
+    </div>
+    <div class="step" id="step3">
+      <h2>Step 3: Toggle para DPI</h2>
+      <label for="toggle">Mostrar campo DPI:</label>
+      <input type="checkbox" id="toggle" formControlName="dpi">
+      <div id="dpiField" [style.display]="dpiFieldVisible ? 'block' : 'none'">
+        <input type="text">
+      </div>
+      <button (click)="nextStep()" [disabled]="stepsDisabled[2]">Next</button>
+    </div>
+  </div>
+</form>

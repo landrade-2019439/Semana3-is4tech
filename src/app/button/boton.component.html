@@ -1,0 +1,17 @@
+<button (click)="openDialog()" class="fab style">FAB</button>
+
+<div *ngIf="isDialogVisible" class="dialog">
+  <h2>Prueba diálogo</h2>
+  <form (submit)="onSubmit()" id="name-form">
+    <label for="name">Nombre:</label>
+    <input type="text" id="name" required [(ngModel)]="name" name="name">
+    <div class="buttons">
+      <button type="button" (click)="closeDialog()" id="cancel-button">Cancelar</button>
+      <button type="submit" id="confirm-button">Confirmar</button>
+    </div>
+  </form>
+</div>
+
+<div *ngIf="result" class="result">
+  {{ result }}
+</div>

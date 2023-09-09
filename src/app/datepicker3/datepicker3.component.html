@@ -1,0 +1,9 @@
+<mat-form-field>
+  <input matInput placeholder="Selecciona mes y año" [readonly]="true" (click)="openMonthYearPicker()">
+  <mat-select [(value)]="selectedMonth" (selectionChange)="updateDate()">
+    <mat-option *ngFor="let month of months" [value]="month">{{ month }}</mat-option>
+  </mat-select>
+  <mat-select [(value)]="selectedYear" (selectionChange)="updateDate()">
+    <mat-option *ngFor="let year of years" [value]="year">{{ year }}</mat-option>
+  </mat-select>
+</mat-form-field>

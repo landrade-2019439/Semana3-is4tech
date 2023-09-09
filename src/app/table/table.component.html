@@ -1,0 +1,27 @@
+<div>
+  <mat-form-field class="filter">
+    <input matInput (keyup)="applyFilter()" placeholder="Buscar por nombre" [(ngModel)]="nombreFilter">
+  </mat-form-field>
+</div>
+
+<mat-table [dataSource]="dataSource" matSort>
+  <ng-container matColumnDef="Id">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> Id </mat-header-cell>
+    <mat-cell *matCellDef="let row"> {{ row.Id }} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="Nombre">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </mat-header-cell>
+    <mat-cell *matCellDef="let row"> {{ row.Nombre }} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="Edad">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> Edad </mat-header-cell>
+    <mat-cell *matCellDef="let row"> {{ row.Edad }} </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
+
+<mat-paginator [length]="datos.length" [pageSize]="10"></mat-paginator>
